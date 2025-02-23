@@ -1,13 +1,11 @@
 
 # Sales Project, Mahmood Nejati 
-#this is my work for requested exercise file upon R program class
+#this is my work upon R program class
 
 #---------------Necessary Libraries---------------
 library(ggplot2, dplyr)
 
-
 #---------------Input Data Frame---------------
-#Resouse : https://www.kaggle.com/datasets/kyanyoga/sample-sales-data
 sales_data<-read.csv(choose.files())
 
 str(sales_data)
