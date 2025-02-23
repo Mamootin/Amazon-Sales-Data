@@ -1,4 +1,4 @@
-
+#Amazon Sales data 
 # Sales Project, Mahmood Nejati 
 #this is my work upon R program class
 
