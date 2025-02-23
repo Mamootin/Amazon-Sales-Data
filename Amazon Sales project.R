@@ -15,7 +15,13 @@ head(sales_data)
 #---------------Data Cleaning---------------
 sales_data==""                                    # Check for empty cells
 sales_data[sales_data==""]<-NA                   #replace empty cells with "NA"
-colSums(is.na(sales_data))                       #Check for  "NA" cells
+colSums(is.na(sales_data))                       #count number of "NA" cells
+sales_data$discounted_price<-as.numeric(gsub("[^0-9.]", "", sales_data$discounted_price)) #Remove "₹" and convert to numeric                                               
+sales_data$actual_price<-as.numeric(gsub("[^0-9.]", "", sales_data$actual_price))
+sales_data$discount_percentage<-as.numeric(gsub("[^0-9.]", "", sales_data$discount_percentage))
+sales_data$rating<-as.numeric(gsub("[^0-9.]", "", sales_data$rating))
+sales_data$rating_count<-as.numeric(gsub("[^0-9.]", "", sales_data$rating_count))
+
 
 
 #---------------Frequency Tables---------------
