@@ -3,7 +3,8 @@
 #this is my work upon R program class
 
 #---------------Necessary Libraries---------------
-library(ggplot2, dplyr)
+install.packages("tidyverse", dependencies = T)
+library(ggplot2, dplyr, tidyverse)
 
 #---------------Input Data Frame---------------
 sales_data<-read.csv(choose.files())
@@ -25,6 +26,23 @@ sales_data$rating_count<-as.numeric(gsub("[^0-9.]", "", sales_data$rating_count)
 
 
 #---------------Frequency Tables---------------
+sales_data$category
+unique_values <- unique(sales_data$category)
+unique_values
+c("Computers","Electronics","OfficeProducts", "MusiacalInstruments","Home&Kitchen", "Car&Motorbike")
+
+sales_data <- sales_data %>%
+  mutate(ProductCategory = case_when(
+      grepl("Computers", category, ignore.case = TRUE) ~ "Computers",
+      grepl("Electronics", category, ignore.case = TRUE) ~ "Electronics",
+      grepl("OfficeProducts", category, ignore.case = TRUE) ~ "OfficeProducts",
+      grepl("MusiacalInstruments", category, ignore.case = TRUE) ~ "MusiacalInstruments",
+      grepl("Home&Kitchen", category, ignore.case = TRUE) ~ "Home&Kitchen",
+      grepl("Car&Motorbike", category, ignore.case = TRUE) ~ "Car&Motorbike",
+      TRUE ~ "Other" )) # Default value if none of the above match
+      
+sales_data$ProductCategory
+
 
 ft_ProductLine<-table(sales_data$PRODUCTLINE)    # R base package => table{base}
 ft_ProductCode<-table(sales_data$PRODUCTCODE)    # R base package => table{base}
